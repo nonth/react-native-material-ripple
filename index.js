@@ -24,6 +24,7 @@ export default class Ripple extends PureComponent {
     rippleSequential: false,
     rippleFades: true,
     disabled: false,
+    useNativeDriver: true,
 
     onRippleAnimation: (animation, callback) => animation.start(callback),
   };
@@ -41,6 +42,7 @@ export default class Ripple extends PureComponent {
     rippleSequential: PropTypes.bool,
     rippleFades: PropTypes.bool,
     disabled: PropTypes.bool,
+    useNativeDriver: PropTypes.bool,
 
     onRippleAnimation: PropTypes.func,
   };
@@ -138,6 +140,7 @@ export default class Ripple extends PureComponent {
       rippleCentered,
       rippleSize,
       onRippleAnimation,
+      useNativeDriver,
     } = this.props;
 
     let w2 = 0.5 * width;
@@ -167,7 +170,7 @@ export default class Ripple extends PureComponent {
         toValue: 1,
         easing: Easing.out(Easing.ease),
         duration: rippleDuration,
-        useNativeDriver: true,
+        useNativeDriver,
       });
 
     onRippleAnimation(animation, this.onAnimationEnd);
